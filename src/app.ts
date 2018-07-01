@@ -8,6 +8,8 @@ const store = new fromStore.Store(
   }
 );
 
+console.log(store.value);
+
 const button = document.querySelector('button') as HTMLButtonElement;
 const input = document.querySelector('input') as HTMLInputElement;
 
@@ -17,7 +19,7 @@ button.addEventListener(
     const playerName: string = input.value.trim();
     if (!playerName) return;
     const player: PlayerDTO = createPlayer(playerName);
-    store.dispatch({ type: 'ADD_PLAYER', payload: player });
+    console.log(player);
     input.value = '';
   },
   false
