@@ -10,4 +10,12 @@ export class Store {
   get value() {
     return this.state;
   }
+
+  dispatch(action) {
+    this.state = {
+      ...this.state,
+      players: [...this.state.players, action.payload]
+    };
+    console.log(this.state);
+  }
 }
