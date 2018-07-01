@@ -5,7 +5,7 @@ export class Store {
 
   constructor(reducers = {}, initialState = {}) {
     this.reducers = reducers;
-    this.state = initialState;
+    this.state = this.reduce(initialState, {});
   }
 
   get value() {
