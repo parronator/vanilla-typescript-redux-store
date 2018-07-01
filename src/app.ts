@@ -1,4 +1,14 @@
 import { PlayerDTO } from './models/playerDTO';
+import * as fromStore from './store';
+
+const store = new fromStore.Store(
+  {},
+  {
+    players: [{ name: 'Albert Parrón', selected: true }]
+  }
+);
+
+console.log(store.value);
 
 const button = document.querySelector('button') as HTMLButtonElement;
 const input = document.querySelector('input') as HTMLInputElement;
