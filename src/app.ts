@@ -1,12 +1,11 @@
 import { PlayerDTO } from './models/playerDTO';
 import * as fromStore from './store';
 
-const store = new fromStore.Store(
-  {},
-  {
-    players: [{ name: 'Albert Parrón', selected: true }]
-  }
-);
+const reducers = {
+  players: fromStore.reducer
+};
+
+const store = new fromStore.Store(reducers);
 
 const button = document.querySelector('button') as HTMLButtonElement;
 const input = document.querySelector('input') as HTMLInputElement;
@@ -18,6 +17,7 @@ button.addEventListener(
     if (!playerName) return;
     const player: PlayerDTO = createPlayer(playerName);
     store.dispatch({ type: 'ADD_PLAYER', payload: player });
+    console.log(store.value);
     input.value = '';
   },
   false
