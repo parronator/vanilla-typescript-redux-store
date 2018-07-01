@@ -17,7 +17,6 @@ button.addEventListener(
     if (!playerName) return;
     const player: PlayerDTO = createPlayer(playerName);
     store.dispatch({ type: 'ADD_PLAYER', payload: player });
-    console.log(store.value);
     input.value = '';
   },
   false
@@ -26,3 +25,5 @@ button.addEventListener(
 function createPlayer(name: string): PlayerDTO {
   return { name, selected: false };
 }
+
+store.subscribe(state => console.log('STATE =>', state));
