@@ -9,6 +9,8 @@ const store = new fromStore.Store(reducers);
 
 const button = document.querySelector('button') as HTMLButtonElement;
 const input = document.querySelector('input') as HTMLInputElement;
+const span = document.querySelector('span') as HTMLSpanElement;
+const playerList = document.querySelector('.players') as HTMLLIElement;
 
 button.addEventListener(
   'click',
@@ -27,3 +29,20 @@ function createPlayer(name: string): PlayerDTO {
 }
 
 store.subscribe(state => console.log('STATE =>', state));
+store.subscribe(state => {
+  renderPlayers(state.players.data);
+});
+
+function renderPlayers(players: PlayerDTO[]) {
+  span.innerHTML = players.length.toString();
+  playerList.innerHTML = '';
+
+  for (const player of players) {
+    playerList.innerHTML += `
+      <li>
+        ${player.name}
+        <button type="button"> Delete </button
+      </li>
+    `;
+  }
+}
