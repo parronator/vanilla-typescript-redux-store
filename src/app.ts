@@ -1,28 +1,22 @@
-import { PlayerDTO } from './models/playerDTO';
+import { IPlayer } from './models/player';
 import * as fromStore from './store';
+
+const button = document.querySelector('button') as HTMLButtonElement;
+const input = document.querySelector('input') as HTMLInputElement;
+
+button.addEventListener('click', addPlayerAndReset, false);
+
+function addPlayerAndReset(): void {
+  const name: string = input.value.trim();
+  if (!name) return;
+  const player: IPlayer = { name, selected: false };
+  store.dispatch({ type: 'ADD_PLAYER', payload: player });
+  console.log(store.value);
+  input.value = '';
+}
 
 const reducers = {
   players: fromStore.reducer
 };
 
 const store = new fromStore.Store(reducers);
-
-const button = document.querySelector('button') as HTMLButtonElement;
-const input = document.querySelector('input') as HTMLInputElement;
-
-button.addEventListener(
-  'click',
-  () => {
-    const playerName: string = input.value.trim();
-    if (!playerName) return;
-    const player: PlayerDTO = createPlayer(playerName);
-    store.dispatch({ type: 'ADD_PLAYER', payload: player });
-    console.log(store.value);
-    input.value = '';
-  },
-  false
-);
-
-function createPlayer(name: string): PlayerDTO {
-  return { name, selected: false };
-}

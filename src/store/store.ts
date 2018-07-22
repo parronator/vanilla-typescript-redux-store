@@ -1,22 +1,24 @@
+import { IReducers, IState, IAction } from '../models/store';
+
 export class Store {
   private subscribers: Function[];
-  private reducers: { [key: string]: Function };
-  private state: { [key: string]: any };
+  private reducers: IReducers;
+  private state: IState;
 
-  constructor(reducers = {}, initialState = {}) {
+  constructor(reducers: IReducers = {}, initialState: IState = {}) {
     this.reducers = reducers;
-    this.state = this.reduce(initialState, {});
+    this.state = this.reduce(initialState, {} as IAction);
   }
 
-  get value() {
+  get value(): IState {
     return this.state;
   }
 
-  dispatch(action) {
+  dispatch(action: IAction): void {
     this.state = this.reduce(this.state, action);
   }
 
-  private reduce(state, action) {
+  private reduce(state: IState, action: IAction): IState {
     const newState = {};
     for (const prop in this.reducers) {
       newState[prop] = this.reducers[prop](state[prop], action);
