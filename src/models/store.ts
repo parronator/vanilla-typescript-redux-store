@@ -1,4 +1,4 @@
-export interface IReducer {
+export interface IReducers {
   [key: string]: Function;
 }
 
