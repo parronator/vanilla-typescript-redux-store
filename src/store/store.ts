@@ -1,13 +1,15 @@
+import { IReducer, IState } from '../models/store';
+
 export class Store {
   private subscribers: Function[];
-  private reducers: { [key: string]: Function };
-  private state: { [key: string]: any };
+  private reducers: IReducer;
+  private state: IState;
 
-  constructor(reducers = {}, initialState = {}) {
+  constructor(reducers: IReducer = {}, initialState: IState = {}) {
     this.state = initialState;
   }
 
-  get value() {
+  get value(): IState {
     return this.state;
   }
 }
