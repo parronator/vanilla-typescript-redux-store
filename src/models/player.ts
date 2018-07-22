@@ -1,4 +1,4 @@
-export interface PlayerDTO {
+export interface IPlayer {
   name: string;
   selected: boolean;
 }
