@@ -1,4 +1,5 @@
 import { IPlayer } from './models/Player/entity';
+import { IReducers } from './models/store';
 import * as fromStore from './store';
 
 const button = document.querySelector('button') as HTMLButtonElement;
@@ -15,8 +16,8 @@ function addPlayerAndReset(): void {
   input.value = '';
 }
 
-const reducers = {
-  players: fromStore.reducer
+const reducers: IReducers = {
+  players: fromStore.playersReducer,
 };
 
 const store = new fromStore.Store(reducers);
