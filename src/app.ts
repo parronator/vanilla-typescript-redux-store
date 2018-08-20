@@ -1,4 +1,4 @@
-import { IPlayer } from './models/player';
+import { IPlayer } from './models/Player/entity';
 
 const button = document.querySelector('button') as HTMLButtonElement;
 const input = document.querySelector('input') as HTMLInputElement;
