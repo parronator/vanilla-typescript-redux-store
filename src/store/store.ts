@@ -16,7 +16,7 @@ export class Store {
   dispatch(action: IAction): void {
     this.state = {
       ...this.state,
-      players: [...this.state.players, action.payload]
+      players: [...this.state.players, action.payload],
     };
     console.log(this.state);
   }
