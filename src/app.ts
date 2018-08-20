@@ -9,8 +9,8 @@ button.addEventListener('click', addPlayerAndReset, false);
 const store = new fromStore.Store(
   {},
   {
-    players: [{ name: 'Albert Parrón', selected: true }]
-  }
+    players: [{ name: 'Albert Parrón', selected: true }],
+  },
 );
 console.log(store.value);
 
