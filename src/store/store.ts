@@ -20,9 +20,12 @@ export class Store {
     this.notify();
   }
 
-  subscribe(fn: Function): void {
+  subscribe(fn: Function) {
     this.subscribers = [...this.subscribers, fn];
     this.notify();
+    return () => {
+      this.subscribers = this.subscribers.filter(sub => sub !== fn);
+    };
   }
 
   private notify(): void {

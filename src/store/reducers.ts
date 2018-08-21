@@ -21,6 +21,17 @@ export function playersReducer(
         data,
       };
     }
+
+    case 'REMOVE_PLAYER': {
+      const player: IPlayer = action.payload;
+      const data: IPlayer[] = state.data.filter(
+        ply => ply.name !== player.name,
+      );
+      return {
+        ...state,
+        data,
+      };
+    }
   }
   return state;
 }
