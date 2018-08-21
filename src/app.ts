@@ -1,5 +1,5 @@
 import { IPlayer } from './models/Player/entity';
-import { IReducers } from './models/store';
+import { IReducers, IAction } from './models/store';
 import * as fromStore from './store';
 
 const button = document.querySelector('button') as HTMLButtonElement;
@@ -11,7 +11,8 @@ function addPlayerAndReset(): void {
   const name: string = input.value.trim();
   if (!name) return;
   const player: IPlayer = { name, selected: false };
-  store.dispatch({ type: 'ADD_PLAYER', payload: player });
+  const action: IAction = { type: 'ADD_PLAYER', payload: player };
+  store.dispatch(action);
   console.log(store.value);
   input.value = '';
 }
