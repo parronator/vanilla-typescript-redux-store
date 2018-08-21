@@ -4,6 +4,8 @@ import * as fromStore from './store';
 
 const button = document.querySelector('button') as HTMLButtonElement;
 const input = document.querySelector('input') as HTMLInputElement;
+const span = document.querySelector('span') as HTMLSpanElement;
+const playerList = document.querySelector('.players') as HTMLLIElement;
 
 button.addEventListener('click', addPlayerAndReset, false);
 

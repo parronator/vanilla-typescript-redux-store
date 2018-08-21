@@ -1,28 +1,24 @@
-import { IPlayer } from '../models/player';
+import { IPlayersState } from '../models/Player/state';
+import { IAction } from '../models/store';
+import { IPlayer } from '../models/Player/entity';
 
-interface State {
-  loading: boolean;
-  loaded: boolean;
-  data: IPlayer[];
-}
-
-export const initialState: State = {
+export const initialState: IPlayersState = {
   loading: false,
   loaded: false,
-  data: [{ name: 'Albert Parrón', selected: true }]
+  data: [{ name: 'Albert Parrón', selected: true }],
 };
 
-export function reducer(
-  state: State = initialState,
-  action: { type: string; payload: any }
+export function playersReducer(
+  state: IPlayersState = initialState,
+  action: IAction,
 ) {
   switch (action.type) {
     case 'ADD_PLAYER': {
-      const player = action.payload;
-      const data = [...state.data, player];
+      const player: IPlayer = action.payload;
+      const data: IPlayer[] = [...state.data, player];
       return {
         ...state,
-        data
+        data,
       };
     }
   }
