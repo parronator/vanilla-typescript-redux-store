@@ -19,7 +19,7 @@ export class Store {
   }
 
   private reduce(state: IState, action: IAction): IState {
-    const newState = {};
+    const newState: IState = {};
     for (const prop in this.reducers) {
       newState[prop] = this.reducers[prop](state[prop], action);
     }
