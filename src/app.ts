@@ -1,23 +1,23 @@
 import { IPlayer } from './models/Player/entity';
+import { IReducers, IAction } from './models/store';
 import * as fromStore from './store';
 
 const button = document.querySelector('button') as HTMLButtonElement;
 const input = document.querySelector('input') as HTMLInputElement;
-const span = document.querySelector('span') as HTMLSpanElement;
-const playerList = document.querySelector('.players') as HTMLLIElement;
 
 button.addEventListener('click', addPlayerAndReset, false);
 
-function addPlayerAndReset() {
-  const playerName: string = input.value.trim();
-  if (!playerName) return;
-  const player: IPlayer = { name: playerName, selected: false };
+function addPlayerAndReset(): void {
+  const name: string = input.value.trim();
+  if (!name) return;
+  const player: IPlayer = { name, selected: false };
   const action: IAction = { type: 'ADD_PLAYER', payload: player };
   store.dispatch(action);
+  console.log(store.value);
   input.value = '';
 }
 
-const reducers: IReducer = {
+const reducers: IReducers = {
   players: fromStore.playersReducer,
 };
 
